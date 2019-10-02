@@ -21,7 +21,9 @@ class App extends Component {
     const {endpoint} = this.state;
     const socket = socketIOClient(endpoint);
     this.setState({socket})
-    socket.on("sendWords", words => this.setState({words}));
+    socket.on("sendWords", words => {
+      this.setState({words});
+    });
   }
 
   render() {

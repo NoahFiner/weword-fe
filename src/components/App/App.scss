@@ -35,6 +35,7 @@ h1 {
 
   .content {
     width: 70%;
+    padding-bottom: 40vh;
 
     .word {
       display: inline-block;
@@ -51,7 +52,6 @@ h1 {
       vertical-align: bottom;
       background-color: #CEDFD9;
       animation: blink 2s infinite;
-
     }
   }
 }
