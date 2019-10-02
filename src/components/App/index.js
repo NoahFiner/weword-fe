@@ -10,11 +10,11 @@ class App extends Component {
     this.state = {
       words: [],
       // TODO THIS IS HELLA INSECURE
-      endpoint: process.env.PROD_ENDPOINT || "http://127.0.0.1:4001",
+      endpoint: process.env.NODE_ENV || "http://127.0.0.1:4001",
       // endpoint: "https://weword-app.herokuapp.com/",
       socket: null,
     };
-    console.log(process.env.PROD_ENDPOINT);
+    console.log(process.env.NODE_ENV);
   }
 
 
