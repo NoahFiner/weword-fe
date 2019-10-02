@@ -1,0 +1,20 @@
+// todo theme scss
+.logo-box {
+    border: 5px solid #CEDFD9;
+    padding: 2%;
+
+    .form {
+        background-color: green;
+        outline: none;
+        border: none;
+        border-bottom: 2px solid #333;
+    }
+
+    p {
+        font-family: "Playfair Display", "Times New Roman", Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        width: 100%;
+        color: #333;
+        font-weight: 900;
+        margin: 0;
+    }
+}

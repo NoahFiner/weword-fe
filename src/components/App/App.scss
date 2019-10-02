@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap');
+
+/*todo make a theme.css*/
+* {
+  font-family: 'Open Sans', 'Helvetica', sans-serif;
+  color: #333;
+  line-height: 1.2;
+}
+
+h1 {
+  font-family: 'Playfair Display', 'Times New Roman', Times, serif;
+  font-weight: 900;
+  height: auto;
+}
+
+.content-outer {
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #f0f0f0;
+  color: #333;
+  padding: 0 5%;
+
+  .divider {
+    background-color: #333;
+    height: 1px;
+    width: 30%;
+    margin: 10px 0;
+  }
+
+  .left-navbar {
+    width: 20%;
+  }
+
+  .content {
+    width: 70%;
+
+    .word {
+      display: inline-block;
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 1.5rem;
+      margin: 5px;
+    }
+
+    .next-word {
+      display: inline-block;
+      height: 1.5rem;
+      width: 0.5rem;
+      margin: 5px;
+      vertical-align: bottom;
+      background-color: #CEDFD9;
+      animation: blink 2s infinite;
+
+    }
+  }
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0
+  }
+
+  50% {
+    opacity: 1
+  }
+
+  100% {
+    opacity: 0
+  }
+}
