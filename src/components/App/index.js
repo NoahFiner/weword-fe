@@ -10,7 +10,7 @@ class App extends Component {
     this.state = {
       words: [],
       // TODO THIS IS HELLA INSECURE
-      endpoint: process.env.NODE_ENV === "production" ? "https://weword-app.herokuapp.com/" : "http://127.0.0.1:4001",
+      endpoint: process.env.PROD_ENDPOINT || "http://127.0.0.1:4001",
       // endpoint: "https://weword-app.herokuapp.com/",
       socket: null,
     }
