@@ -13,7 +13,7 @@ class App extends Component {
       endpoint: process.env.PROD_ENDPOINT || "http://127.0.0.1:4001",
       // endpoint: "https://weword-app.herokuapp.com/",
       socket: null,
-    }
+    };
     console.log(process.env.PROD_ENDPOINT);
   }
 
