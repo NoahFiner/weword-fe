@@ -14,7 +14,7 @@ class App extends Component {
       // endpoint: "https://weword-app.herokuapp.com/",
       socket: null,
     }
-    console.log(process.env.NODE_ENV);
+    console.log(process.env.PROD_ENDPOINT);
   }
 
 
