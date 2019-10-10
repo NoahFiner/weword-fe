@@ -19,7 +19,9 @@ class Footer extends Component {
     console.log('handling submit');
     this.props.socket.emit("addWord", this.state.word, (error) => {
       if(error) {
-        this.setState({error});
+        if(error !== "duplicate word") {
+          this.setState({error});
+        }
       } else {
         this.setState({word: ''});
       }
@@ -31,7 +33,7 @@ class Footer extends Component {
       <div className={"footer " + (this.props.inactive ? 'inactive':  '')}>
         <form onSubmit={this.handleSubmit}>
           <h1>Add a word:</h1>
-          <input type="text" disabled={this.props.inactive} onChange={this.handleChange} value={this.state.word} className={"add-word-input " + (this.state.error ? 'error' : '')}></input>
+          <input type="text" onChange={this.handleChange} value={this.state.word} className={"add-word-input " + (this.state.error ? 'error' : '')}></input>
           <input type="submit" value="submit" className="button"></input>
         </form>
         <p id="error-msg">
