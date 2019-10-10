@@ -10,11 +10,18 @@
   background-color: #f0f0f0;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 
+  &.inactive > form {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
   form {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: nowrap;
+    opacity: 1;
+    transition: opacity 0.25s;
 
     input {
       margin: 0 1em;
@@ -27,6 +34,10 @@
       border-bottom: 3px solid #CEDFD9;
       font-size: 2em;
       font-family: 'Times New Roman', Times, serif;
+
+      &.error {
+        color: red;
+      }
     }
 
     .button {
@@ -40,5 +51,12 @@
       outline: none;
       box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
     }
+  }
+
+  #error-msg {
+    color: red;
+    font-weight: 900;
+    display: block;
+    text-align: center;
   }
 }

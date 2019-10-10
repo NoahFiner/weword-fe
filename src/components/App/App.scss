@@ -56,6 +56,19 @@ h1 {
   }
 }
 
+.word-enter {
+  opacity: 0;
+  transform: translateX(-25px);
+  color: red;
+}
+
+.word-enter.word-enter-active {
+  opacity: 1;
+  color: black;
+  transform: translateY(0);
+  transition: opacity 0.5s, transform 0.5s, color 0.5s;
+}
+
 @keyframes blink {
   0% {
     opacity: 0
