@@ -2,15 +2,18 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap');
 
 /*todo make a theme.css*/
+$break-large: 900px;
+
 .footer {
-  height: 20vh;
-  top: 80vh;
+  height: 8rem;
+  margin-top: -8rem;
+  top: 100%;
   width: 100%;
   position: fixed;
   background-color: #f0f0f0;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 
-  &.inactive > form {
+  &.inactive>form {
     opacity: 0.5;
     pointer-events: none;
   }
@@ -21,10 +24,15 @@
     align-items: center;
     flex-wrap: nowrap;
     opacity: 1;
+    padding: 0 10%;
     transition: opacity 0.25s;
 
     input {
       margin: 0 1em;
+
+      @media screen and (max-width: $break-large) {
+        width: 50vw;
+      }
     }
 
     .add-word-input {
@@ -33,7 +41,14 @@
       border: 0;
       border-bottom: 3px solid #CEDFD9;
       font-size: 2em;
-      font-family: 'Times New Roman', Times, serif;
+
+      @media screen and (max-width: $break-large) {
+        font-size: 1.5em;
+      }
+
+      font-family: 'Times New Roman',
+      Times,
+      serif;
 
       &.error {
         color: red;

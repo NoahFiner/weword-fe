@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import socketIOClient from "socket.io-client";
 import './App.scss';
-import Logo from '../Logo';
 import Footer from '../Footer';
+import LeftNavbar from '../LeftNavbar';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 class App extends Component {
@@ -11,8 +11,8 @@ class App extends Component {
     this.state = {
       words: [],
       // TODO THIS IS HELLA INSECURE
-      endpoint: process.env.NODE_ENV ? "https://weword-app.herokuapp.com/" : "http://127.0.0.1:4001",
-      // endpoint: "http://127.0.0.1:4001",
+      // endpoint: process.env.NODE_ENV ? "https://weword-app.herokuapp.com/" : "http://127.0.0.1:4001",
+      endpoint: "http://127.0.0.1:4001",
       socket: null,
       disabled: false,
     };
@@ -30,11 +30,11 @@ class App extends Component {
 
     socket.on("disable", data => {
       this.setState({disabled: true});
-    })
+    });
 
     socket.on("enable", data => {
       this.setState({disabled: false});
-    })
+    });
   }
 
   render() {
@@ -42,12 +42,8 @@ class App extends Component {
     console.log(words);
     return (
       <div className="everything-outer">
+        <LeftNavbar />
         <div className="content-outer">
-          <div className="left-navbar">
-            <Logo size='80' />
-            <h1>Book title</h1>
-            <div className="divider"></div>
-          </div>
           <div className="content">
             <TransitionGroup>
               {words.map((value, idx) => {
