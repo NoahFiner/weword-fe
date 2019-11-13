@@ -7,8 +7,8 @@ class LeftNavbar extends Component {
     return (
       <div className="left-navbar">
         <Logo size='80' />
-        <h1>Book title</h1>
-        <p>Description goes here I'm talking about the book and some of the cool parts about it</p>
+        <h1>{this.props.story.name}</h1>
+        <p>{this.props.story.description}</p>
         <div className="divider"></div>
       </div>
     );

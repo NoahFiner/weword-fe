@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap');
+
+
+$break-large: 900px;
+
+* {
+  text-decoration: none;
+}
+
+.book-outer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: space-around;
+  height: 20rem;
+  width: 15rem;
+  padding: 10px;
+  background-color: #B09398;
+  transform: translateY(0);
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.3);
+  margin: 1rem;
+  cursor: pointer;
+  transition: transform 0.25s, box-shadow 0.25s;
+
+  * {
+    color: #fff;
+    margin: 0;
+  }
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 7px 7px rgba(0, 0, 0, 0.2);
+  }
+
+  h1 {
+    font-family: 'Playfair Display', 'Times New Roman', Times, serif;
+    font-weight: 900;
+    height: auto;
+    margin: 1rem 0;
+  }
+  
+  .outer {
+    padding: 2vw 10vw;
+  }
+}
+

@@ -1,18 +1,20 @@
 import React, {Component} from 'react';
 import socketIOClient from "socket.io-client";
-import './App.scss';
+import './Story.scss';
 import Footer from '../Footer';
 import LeftNavbar from '../LeftNavbar';
+import axios from 'axios';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
-class App extends Component {
+class Story extends Component {
   constructor() {
     super();
     this.state = {
+      story: {},
       words: [],
       // TODO THIS IS HELLA INSECURE
-      endpoint: process.env.NODE_ENV ? "https://weword-app.herokuapp.com/" : "http://127.0.0.1:4001",
-      // endpoint: "http://127.0.0.1:4001",
+      // endpoint: process.env.NODE_ENV ? "https://weword-app.herokuapp.com/" : "http://127.0.0.1:4001",
+      endpoint: "http://127.0.0.1:4001",
       socket: null,
       disabled: false,
     };
@@ -20,10 +22,21 @@ class App extends Component {
   }
 
 
-  componentDidMount() {
+  async componentDidMount() {
+    let {storyId} = this.props.match.params;
     const {endpoint} = this.state;
+    try {
+      const response = await axios.get(endpoint + "/stories/" + storyId);
+      const {story} = response.data;
+      console.log(story);
+      this.setState({story});
+    } catch(e) {
+      console.error(e);
+    }
+
+
     const socket = socketIOClient(endpoint);
-    this.setState({socket})
+    this.setState({socket});
     socket.on("sendWords", words => {
       this.setState({words});
     });
@@ -41,8 +54,8 @@ class App extends Component {
     const {words} = this.state;
     console.log(words);
     return (
-      <div className="everything-outer">
-        <LeftNavbar />
+      <div>
+        <LeftNavbar story={this.state.story} />
         <div className="content-outer">
           <div className="content">
             <TransitionGroup>
@@ -61,4 +74,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Story;
