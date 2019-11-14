@@ -43,8 +43,13 @@ class Home extends Component {
         <Logo size='150' />
         <h1>Write a story with a bunch of random people online</h1>
           <TransitionGroup className="books-outer">
+              <CSSTransition key="create" timeout={0} classNames="story">
+                <Link to="/stories/create">
+                  <Book create />
+                </Link>
+              </CSSTransition>
               {stories.map((story, idx) => {
-                return (<CSSTransition key={story._id} timeout={50*idx} classNames="story">
+                return (<CSSTransition key={story._id} timeout={500} classNames="story">
                   <Link to={"/stories/" + story._id}>
                     <Book story={story} />
                   </Link>

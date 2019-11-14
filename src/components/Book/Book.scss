@@ -23,6 +23,31 @@ $break-large: 900px;
   cursor: pointer;
   transition: transform 0.25s, box-shadow 0.25s;
 
+  &.create {
+    background-color: #ccc;
+  }
+
+  .book-single {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 100%;
+
+    h1 {
+      text-align: center;
+      width: 100%;
+      margin: 0;
+    }
+
+    .create-book {
+      height: 5rem;
+      width: 5rem;
+      margin: 0;
+      opacity: 0.5;
+    }
+  }
+
   * {
     color: #fff;
     margin: 0;
@@ -44,4 +69,3 @@ $break-large: 900px;
     padding: 2vw 10vw;
   }
 }
-

@@ -15,8 +15,8 @@ class RouterOuter extends Component {
       <div className="outer">
         <Router>
           <Switch>
-            <Route path="/home" component={Home} />
             <Route path="/stories/:storyId" component={Story} />
+            <Route path="/" component={Home} />
           </Switch>
         </Router>
       </div>
