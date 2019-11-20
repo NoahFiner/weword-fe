@@ -16,8 +16,9 @@ class Footer extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log('handling submit');
-    this.props.socket.emit("addWord", this.state.word.trim(), (error) => {
+    let {storyId} = this.props;
+
+    this.props.socket.emit("addWord", {word: this.state.word.trim(), room: storyId}, (error) => {
       if(error) {
         if(error !== "duplicate word") {
           this.setState({error});

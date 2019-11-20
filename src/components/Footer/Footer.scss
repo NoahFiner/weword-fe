@@ -27,6 +27,16 @@ $break-large: 900px;
     padding: 0 10%;
     transition: opacity 0.25s;
 
+    @media screen and (max-width: $break-large) {
+      flex-wrap: wrap;
+
+      h1 {
+        font-size: 2rem;
+        padding: 0;
+        margin: 0;
+      }
+    }
+
     input {
       margin: 0 1em;
 

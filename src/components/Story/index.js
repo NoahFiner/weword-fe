@@ -30,24 +30,31 @@ class Story extends Component {
       const {story} = response.data;
       console.log(story);
       this.setState({story});
+
+      const socket = socketIOClient(endpoint);
+      this.setState({socket});
+
+      socket.emit("join", {room: storyId}, error => {
+        if(error) {
+          alert(error);
+        }
+      });
+
+      socket.on("sendWords", words => {
+        console.log("gettings sent words", words);
+        this.setState({words});
+      });
+
+      socket.on("disable", data => {
+        this.setState({disabled: true});
+      });
+
+      socket.on("enable", data => {
+        this.setState({disabled: false});
+      });
     } catch(e) {
       console.error(e);
     }
-
-
-    const socket = socketIOClient(endpoint);
-    this.setState({socket});
-    socket.on("sendWords", words => {
-      this.setState({words});
-    });
-
-    socket.on("disable", data => {
-      this.setState({disabled: true});
-    });
-
-    socket.on("enable", data => {
-      this.setState({disabled: false});
-    });
   }
 
   render() {
@@ -61,14 +68,14 @@ class Story extends Component {
             <TransitionGroup>
               {words.map((value, idx) => {
                 return (<CSSTransition timeout={500} classNames="word">
-                  <p key={idx} className="word">{value}</p>
+                  <p key={idx} className="word">{value.word}</p>
                 </CSSTransition>)
               })}
               <div className="next-word"></div>
             </TransitionGroup>
           </div>
         </div>
-        <Footer inactive={this.state.disabled} socket={this.state.socket} />
+        <Footer inactive={this.state.disabled} socket={this.state.socket} storyId={this.state.story._id} />
       </div>
     );
   }
