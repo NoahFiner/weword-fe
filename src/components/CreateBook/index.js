@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import Logo from '../Logo';
 import axios from 'axios';
-import qs from 'qs';
 import './CreateBook.scss';
 import {withRouter} from 'react-router';
 import { faThumbsDown } from '@fortawesome/free-solid-svg-icons';
@@ -36,20 +35,17 @@ class CreateBook extends Component {
 
   async handleSubmit(event) {
     event.preventDefault();
+    const params = {
+      name: this.state.title,
+      description: this.state.description,
+    }
+    console.log("submitting", params);
     try {
-      const {story} = await axios({
-        method: 'post',
-        url: this.state.endpoint + '/stories/create',
-        data: {
-          name: this.state.title,
-          description: this.state.description,
-        }
-      });
-      console.log(story);
-      // this.props.history.push('/stories/' + story._id);
+      const {data} = await axios.post(this.state.endpoint + '/create', null, {params});
+      this.props.history.push('/stories/' + data.story._id);
     } catch(error) {
       console.log(error);
-      this.setState({error});
+      this.setState({error: JSON.stringify(error)});
     }
   }
 
@@ -61,15 +57,17 @@ class CreateBook extends Component {
         <form onSubmit={this.handleSubmit}>
           <label>
             Title
+            <span>Think of something short and sweet</span>
           </label>
           <input type="text" name="title" value={this.state.title} onChange={this.handleInputChange} />
 
           <label>
             Description
+            <span>What's this thing even about?</span>
           </label>
           <input type="text" name="description" value={this.state.description} onChange={this.handleInputChange} />
           <input type="submit" value="Submit" />
-          <p className="error">{this.state.error}</p>
+          <p className="error" style={{display: (this.state.error ? "block" : "none")}}>Error in creating your story</p>
         </form>
       </div>
     );

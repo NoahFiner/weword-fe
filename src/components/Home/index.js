@@ -44,7 +44,7 @@ class Home extends Component {
         <h1>Write a story with a bunch of random people online</h1>
           <TransitionGroup className="books-outer">
               <CSSTransition key="create" timeout={0} classNames="story">
-                <Link to="/stories/create">
+                <Link to="/create">
                   <Book create />
                 </Link>
               </CSSTransition>
