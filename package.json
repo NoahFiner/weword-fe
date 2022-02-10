@@ -12,7 +12,7 @@
     "@fortawesome/react-fontawesome": "^0.1.7",
     "axios": "^0.19.0",
     "cors": "^2.8.5",
-    "node-sass": "^4.12.0",
+    "node-sass": "^7.0.0",
     "qs": "^6.9.1",
     "react": "^16.10.1",
     "react-dom": "^16.9.0",
